@@ -90,10 +90,6 @@ class FullscreenActivity : AppCompatActivity() {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         binding.dummyButton.setOnTouchListener(delayHideTouchListener)
-
-        Handler().postDelayed({
-            throw RuntimeException("Test Crash") // Force a crash
-        }, 3000)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -138,6 +134,10 @@ class FullscreenActivity : AppCompatActivity() {
         // Schedule a runnable to display UI elements after a delay
         hideHandler.removeCallbacks(hidePart2Runnable)
         hideHandler.postDelayed(showPart2Runnable, UI_ANIMATION_DELAY.toLong())
+
+        hideHandler.postDelayed({
+            throw RuntimeException("Test Crash") // Force a crash
+        }, 3000)
     }
 
     /**
