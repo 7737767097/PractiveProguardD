@@ -20,6 +20,7 @@ android {
 
     buildTypes {
         release {
+//      Comment below 3 lines if you want to disable minify.
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
